@@ -62,7 +62,7 @@ module.exports = {
     module: {
         rules: [
           {
-            test: /\.js$/i,
+            test: /\.m?js$/i,
             exclude: /node_modules/,
             use: {
               loader: 'babel-loader',
@@ -108,7 +108,6 @@ module.exports = {
           },
           {
             test: /\.html$/i,
-            //use: ['html-loader']
             use: [
               {
                 loader: 'html-loader',
@@ -125,7 +124,6 @@ module.exports = {
                 }
               }
             ]
-
           },
         ]
       },

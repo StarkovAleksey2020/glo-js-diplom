@@ -4,7 +4,8 @@ font-family: 'Helios';
 */
 @font-face {
     font-family: 'Helios';
-    src:url('../fonts/HeliosCondC-webfont.eot'),
+    src:
+    /*url('../fonts/HeliosCondC-webfont.eot'),*/
         url('../fonts/HeliosCondC-webfont.ttf'),
         url('../fonts/HeliosCondC-webfont.woff'),
         url('../fonts/HeliosCondC-webfont.svg'),
@@ -14,7 +15,8 @@ font-family: 'Helios';
 }
 @font-face {
     font-family: 'Helios';
-    src:url('../fonts/HeliosCondC-Bold-webfont.eot'),
+    src:
+    /*url('../fonts/HeliosCondC-Bold-webfont.eot'),*/
         url('../fonts/HeliosCondC-Bold-webfont.ttf'),
         url('../fonts/HeliosCondC-Bold-webfont.woff'),
         url('../fonts/HeliosCondC-Bold-webfont.svg'),
