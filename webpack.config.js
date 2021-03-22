@@ -3,11 +3,12 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+//const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 const mode = process.env.NODE_ENV;
 
 const isDev = mode === 'development';
+
 
 const generateFilename = ext => isDev ?
     `[name].${ext}` :
@@ -39,6 +40,7 @@ module.exports = {
         new CopyPlugin({
           patterns: [{ from: 'favicon', to: 'favicon' }]
         }),
+        /*
         new ImageMinimizerPlugin({
           minimizerOptions: {
             plugins: [
@@ -55,6 +57,7 @@ module.exports = {
             ]
           }
         }),
+        */
     ],
     module: {
         rules: [
@@ -82,7 +85,7 @@ module.exports = {
             ],
           },
           {
-            test: /\.(png|jpe?g|gif|svg)$/i,
+            test: /\.(png|jpe?g|gif|svg|jpg)$/i,
             use: [
               {
                 loader: 'file-loader',
@@ -93,7 +96,7 @@ module.exports = {
             ],
           },
           {
-            test: /\.(woff|woff2)$/i,
+            test: /\.(ttf|eot|woff|woff2)$/i,
             use: [
               {
                 loader: 'file-loader',
@@ -105,7 +108,24 @@ module.exports = {
           },
           {
             test: /\.html$/i,
-            use: ['html-loader']
+            //use: ['html-loader']
+            use: [
+              {
+                loader: 'html-loader',
+                options: {
+                  sources: {
+                    list: [
+                      {
+                        tag: 'img',
+                        attribute: 'data-src',
+                        type: 'src',
+                      }
+                    ]
+                  },
+                }
+              }
+            ]
+
           },
         ]
       },
@@ -120,4 +140,7 @@ module.exports = {
         historyApiFallback: true
       },
       devtool: isDev && 'source-map',
+      stats: {
+        children: true,
+      }
 };
