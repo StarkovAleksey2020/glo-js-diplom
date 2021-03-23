@@ -39,18 +39,25 @@ import clockIcon from './images/clock-icon.png';
 import closeIcon from './images/close_icon_green.svg';
 
 import Modal from './modules/modal';
+import scrollHref from './modules/scroll';
+import Menu from './modules/menu';
 
 
 // Добавляем обработку открытия модального окна с оверлеем
 const modalOverlay = document.querySelector('.modal-overlay');
 const modalWindow = document.getElementById('callback');
 const callBackBtn = document.getElementById('callBckBtnFirst');
+const menuBtn = document.querySelector('.mob-menu-btn');
+const topMenu = document.querySelector('.visible-md-inline-block');
 
 const modalInstance = new Modal(modalWindow, modalOverlay);
+const menuInstance = new Menu(topMenu);
 
 class MainClass {
-    constructor(modal) {
+    constructor(modal, menu) {
         this.modal = modal;
+        this.menu = menu;
+        this.menuOpened = false;
     }
 
     eventsListeners() {
@@ -65,9 +72,18 @@ class MainClass {
                 this.modal.closeModal();
             });
         });
-
+        menuBtn.addEventListener('click', () => {
+            this.menuOpened = menuInstance.toggleMenu(this.menuOpened);
+        });
     }
 }
 
-const mainClass = new MainClass(modalInstance);
+const mainClass = new MainClass(modalInstance, menuInstance);
 mainClass.eventsListeners();
+
+// скроллинг
+const anchors = document.querySelectorAll('a[href*="#"]');
+scrollHref(anchors);
+
+// добавить пойнтер на кнопку меню
+menuBtn.style.cursor = 'pointer';
