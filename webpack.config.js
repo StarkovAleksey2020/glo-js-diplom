@@ -19,7 +19,8 @@ module.exports = {
         main: './index.js',
     },
     output: {
-        filename: `./js/${generateFilename('js')}`,
+        filename: './js/main.js',
+        //filename: `./js/${generateFilename('js')}`,
         path: path.resolve(__dirname, 'build'),
         environment: {
             arrowFunction: false

@@ -37,3 +37,37 @@ import addresIcon from './images/address-icon.png';
 import telIcon from './images/tel-icon.png';
 import clockIcon from './images/clock-icon.png';
 import closeIcon from './images/close_icon_green.svg';
+
+import Modal from './modules/modal';
+
+
+// Добавляем обработку открытия модального окна с оверлеем
+const modalOverlay = document.querySelector('.modal-overlay');
+const modalWindow = document.getElementById('callback');
+const callBackBtn = document.getElementById('callBckBtnFirst');
+
+const modalInstance = new Modal(modalWindow, modalOverlay);
+
+class MainClass {
+    constructor(modal) {
+        this.modal = modal;
+    }
+
+    eventsListeners() {
+        callBackBtn.addEventListener('click', () => {
+            this.modal.openModal();
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            
+            closeModalBtn.addEventListener('click', () => {
+                this.modal.closeModal();
+            });
+            this.modal.modalOverlay.addEventListener('click', () => {
+                this.modal.closeModal();
+            });
+        });
+
+    }
+}
+
+const mainClass = new MainClass(modalInstance);
+mainClass.eventsListeners();
