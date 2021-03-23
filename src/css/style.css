@@ -840,6 +840,54 @@ hr.white {
 }
 
 /* top slider */
+.item-slide {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+	opacity:0;
+	-webkit-transition:opacity .5s;
+	transition:opacity .5s
+}
+.item-slide-active {
+	opacity:1;
+	-webkit-transition:opacity .5s;
+	transition:opacity .5s
+}
+.portfolio-dots {
+	position:absolute;
+	bottom:20px;
+	width:100%;
+	margin:20px auto 0;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	-webkit-box-pack:center;
+	-ms-flex-pack:center;
+	justify-content:center;
+	z-index:5
+}
+.portfolio-dots .dot {
+	cursor:pointer;
+	height:16px;
+	width:16px;
+	margin:0 10px;
+	border-radius:50%;
+	border:solid #fff;
+	display:inline-block;
+	-webkit-transition:background-color,-webkit-transform .4s;
+	transition:background-color,transform .4s,-webkit-transform .4s
+}
+.portfolio-dots .dot-active {
+	background-color:#19b5fe;
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2)
+}
+.portfolio-dots .dot:hover {
+	background-color:#53c6fe;
+	-webkit-transform:scale(1.2);
+	transform:scale(1.2)
+}
 .top-slider .slick-dots {
 	position: absolute;
 	bottom: 25px;
@@ -857,7 +905,7 @@ hr.white {
 .top-slider .item {
 	overflow: hidden;
 	height: 450px;
-	position: relative;
+	/*position: relative;*/
 }
 .top-slider .item:before {
 	content: "";
