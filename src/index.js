@@ -45,6 +45,7 @@ import slider from './modules/slider';
 import dots from './modules/add-dots';
 import Carousel from './modules/carousel';
 import Accordeon from './modules/accordeon';
+import GoTop from './modules/go-top';
 
 
 // Добавляем обработку открытия модального окна с оверлеем
@@ -56,6 +57,7 @@ const topMenu = document.querySelector('.visible-md-inline-block');
 const buttonServices = document.querySelector('.button-services');
 const accordeonBlock = document.querySelector('.accordeon');
 const accordeonItems = accordeonBlock.querySelectorAll('.element');
+const upElement = document.querySelector('.up');
 
 const modalInstance = new Modal(modalWindow, modalOverlay);
 const menuInstance = new Menu(topMenu);
@@ -79,6 +81,7 @@ const carousel = new Carousel({
     modal: modalInstance,
 });
 const accordeon = new Accordeon(accordeonItems);
+const goTop = new GoTop(upElement, 150);
 
 class MainClass {
     constructor(modal, menu) {
@@ -134,3 +137,5 @@ slider();
 carousel.init();
 //обработка ЧАВО
 accordeon.init();
+//обработка кнопки возврата на начало страницы
+goTop.init();
