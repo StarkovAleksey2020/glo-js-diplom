@@ -52,7 +52,7 @@ const modalWindow = document.getElementById('callback');
 const callBackBtn = document.getElementById('callBckBtnFirst');
 const menuBtn = document.querySelector('.mob-menu-btn');
 const topMenu = document.querySelector('.visible-md-inline-block');
-const orderButtons = Array.from(document.querySelectorAll('.img-wrapper'));
+const buttonServices = document.querySelector('.button-services');
 
 const modalInstance = new Modal(modalWindow, modalOverlay);
 const menuInstance = new Menu(topMenu);
@@ -97,6 +97,17 @@ class MainClass {
         });
         menuBtn.addEventListener('click', () => {
             this.menuOpened = menuInstance.toggleMenu(this.menuOpened);
+        });
+        buttonServices.addEventListener('click', () => {
+            this.modal.openModal();
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            
+            closeModalBtn.addEventListener('click', () => {
+                this.modal.closeModal();
+            });
+            this.modal.modalOverlay.addEventListener('click', () => {
+                this.modal.closeModal();
+            });
         });
     }
 }
