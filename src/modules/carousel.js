@@ -1,5 +1,3 @@
-'use sctrict';
-
 export default class Carousel {
     constructor({
         main,
@@ -10,6 +8,7 @@ export default class Carousel {
         position = 0,
         slidesToShow = 3,
         responsive = [],
+        modal,
     }) {
         this.main = document.querySelector(main);
         this.wrap = document.querySelector(wrap);
@@ -24,6 +23,7 @@ export default class Carousel {
             maxPosition: this.slides.length - this.slidesToShow,
         };
         this.responsive = responsive;
+        this.modal = modal;
     }
 
     init() {
@@ -38,7 +38,25 @@ export default class Carousel {
         if (this.responsive) {
             this.responseInit();
         }
-        
+        this.addOrderBtnListeners();
+    }
+
+    addOrderBtnListeners() {
+        const orderButtons = Array.from(this.main.querySelectorAll('.img-wrapper'));
+        orderButtons.forEach( item => {
+            item.addEventListener('click', (event) => {
+                event.preventDefault();
+                this.modal.openModal();
+                const closeModalBtn = document.getElementById('closeModalBtn');
+                
+                closeModalBtn.addEventListener('click', () => {
+                    this.modal.closeModal();
+                });
+                this.modal.modalOverlay.addEventListener('click', () => {
+                    this.modal.closeModal();
+                });
+            });
+        });
     }
 
     responseInit() {

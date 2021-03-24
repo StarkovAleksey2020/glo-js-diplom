@@ -52,6 +52,7 @@ const modalWindow = document.getElementById('callback');
 const callBackBtn = document.getElementById('callBckBtnFirst');
 const menuBtn = document.querySelector('.mob-menu-btn');
 const topMenu = document.querySelector('.visible-md-inline-block');
+const orderButtons = Array.from(document.querySelectorAll('.img-wrapper'));
 
 const modalInstance = new Modal(modalWindow, modalOverlay);
 const menuInstance = new Menu(topMenu);
@@ -72,6 +73,7 @@ const carousel = new Carousel({
             slidesToShow: 1,
         },
     ],
+    modal: modalInstance,
 });
 
 class MainClass {

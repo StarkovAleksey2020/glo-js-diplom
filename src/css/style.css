@@ -1161,6 +1161,7 @@ video#video_background {
 	position: relative;
 	background: #fff;
 	padding: 15px 15px 0;
+	z-index: 30;
 }
 .services-section .element .img-wrapper:after {
 	content: "";
