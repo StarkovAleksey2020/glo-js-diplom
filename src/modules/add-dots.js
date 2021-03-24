@@ -7,7 +7,7 @@ const addDots = () => {
       for (let i = 0; i <= slideCount - 1; i++) {
         const li = document.createElement('li');
         li.classList.add('dot');
-        if (i === 0) li.classList.add('dot-active');
+        if (i === 0) {li.classList.add('dot-active');}
         dotsUl.append(li);
       }
     }

@@ -865,10 +865,10 @@ hr.white {
 	-webkit-box-pack:center;
 	-ms-flex-pack:center;
 	justify-content:center;
-	z-index:5
+	z-index: 15;
 }
 .portfolio-dots .dot {
-	cursor:pointer;
+	cursor: pointer;
 	height:16px;
 	width:16px;
 	margin:0 10px;
@@ -876,17 +876,22 @@ hr.white {
 	border:solid #fff;
 	display:inline-block;
 	-webkit-transition:background-color,-webkit-transform .4s;
-	transition:background-color,transform .4s,-webkit-transform .4s
+	transition:background-color,transform .4s,-webkit-transform .4s;
+	z-index: 100;
 }
 .portfolio-dots .dot-active {
+	cursor: pointer;
 	background-color:#19b5fe;
 	-webkit-transform:scale(1.2);
-	transform:scale(1.2)
+	transform:scale(1.2);
+	z-index: 100;
 }
 .portfolio-dots .dot:hover {
+	cursor: pointer;
 	background-color:#53c6fe;
 	-webkit-transform:scale(1.2);
-	transform:scale(1.2)
+	transform:scale(1.2);
+	z-index: 100;
 }
 .top-slider .slick-dots {
 	position: absolute;

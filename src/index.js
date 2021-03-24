@@ -41,7 +41,7 @@ import closeIcon from './images/close_icon_green.svg';
 import Modal from './modules/modal';
 import scrollHref from './modules/scroll';
 import Menu from './modules/menu';
-import Slider from './modules/slider';
+import slider from './modules/slider';
 import dots from './modules/add-dots';
 
 
@@ -52,16 +52,8 @@ const callBackBtn = document.getElementById('callBckBtnFirst');
 const menuBtn = document.querySelector('.mob-menu-btn');
 const topMenu = document.querySelector('.visible-md-inline-block');
 
-const slider = document.querySelector('.top-slider');
-const slideArray = Array.from(document.querySelectorAll('.item-slide'));
-
-// добавляем точки в слайдер
-dots();
-const sliderDotsArray = Array.from(document.querySelectorAll('.dot'));
-
 const modalInstance = new Modal(modalWindow, modalOverlay);
 const menuInstance = new Menu(topMenu);
-const sliderInstance = new Slider(slider, slideArray, sliderDotsArray);
 
 class MainClass {
     constructor(modal, menu) {
@@ -98,5 +90,7 @@ scrollHref(anchors);
 // добавить пойнтер на кнопку меню
 menuBtn.style.cursor = 'pointer';
 
+// добавляем точки в слайдер
+dots();
 // запуск слайдера
-sliderInstance.startSlide(3000);
+slider();
