@@ -43,6 +43,7 @@ import scrollHref from './modules/scroll';
 import Menu from './modules/menu';
 import slider from './modules/slider';
 import dots from './modules/add-dots';
+import Carousel from './modules/carousel';
 
 
 // Добавляем обработку открытия модального окна с оверлеем
@@ -54,6 +55,24 @@ const topMenu = document.querySelector('.visible-md-inline-block');
 
 const modalInstance = new Modal(modalWindow, modalOverlay);
 const menuInstance = new Menu(topMenu);
+const carousel = new Carousel({
+    main: '.services-elements',
+    wrap: '.services-carousel',
+    prev: '.arrow-left',
+    next: '.arrow-right',
+    slidesToShow: 3,
+    infinity: true,
+    responsive: [
+        {
+            breakpoint: 840,
+            slidesToShow: 2,
+        },
+        {
+            breakpoint: 576,
+            slidesToShow: 1,
+        },
+    ],
+});
 
 class MainClass {
     constructor(modal, menu) {
@@ -94,3 +113,5 @@ menuBtn.style.cursor = 'pointer';
 dots();
 // запуск слайдера
 slider();
+//запуск карусели
+carousel.init();

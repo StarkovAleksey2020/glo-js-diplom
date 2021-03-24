@@ -1,5 +1,5 @@
 export default class Menu {
-    constructor(menuElement, ) {
+    constructor(menuElement) {
         this.menuElement = menuElement;
     }
 
