@@ -44,6 +44,7 @@ import Menu from './modules/menu';
 import slider from './modules/slider';
 import dots from './modules/add-dots';
 import Carousel from './modules/carousel';
+import Accordeon from './modules/accordeon';
 
 
 // Добавляем обработку открытия модального окна с оверлеем
@@ -53,6 +54,8 @@ const callBackBtn = document.getElementById('callBckBtnFirst');
 const menuBtn = document.querySelector('.mob-menu-btn');
 const topMenu = document.querySelector('.visible-md-inline-block');
 const buttonServices = document.querySelector('.button-services');
+const accordeonBlock = document.querySelector('.accordeon');
+const accordeonItems = accordeonBlock.querySelectorAll('.element');
 
 const modalInstance = new Modal(modalWindow, modalOverlay);
 const menuInstance = new Menu(topMenu);
@@ -75,6 +78,7 @@ const carousel = new Carousel({
     ],
     modal: modalInstance,
 });
+const accordeon = new Accordeon(accordeonItems);
 
 class MainClass {
     constructor(modal, menu) {
@@ -128,3 +132,5 @@ dots();
 slider();
 //запуск карусели
 carousel.init();
+//обработка ЧАВО
+accordeon.init();
