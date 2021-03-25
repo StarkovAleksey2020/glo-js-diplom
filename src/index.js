@@ -142,5 +142,4 @@ accordeon.init();
 //обработка кнопки возврата на начало страницы
 goTop.init();
 // send-ajax-form
-//sendForm('formCallback');
 sendForm.init();
