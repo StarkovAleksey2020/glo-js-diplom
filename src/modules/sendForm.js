@@ -116,6 +116,10 @@ export default class SendForm {
         item.value = '';
       }
     }
+    const message = document.querySelector('error-message');
+    if (message) {
+      message.innerHTML = '';
+    }
   }
 
   postData(body, outputData, errorData) {
@@ -136,5 +140,8 @@ export default class SendForm {
     request.open('POST', 'https://jsonplaceholder.typicode.com/posts', true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify(body));
+    setTimeout(() => {
+      this.message.textContent = '';
+    }, 5000);
   }
 }
