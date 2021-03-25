@@ -46,7 +46,8 @@ import dots from './modules/add-dots';
 import Carousel from './modules/carousel';
 import Accordeon from './modules/accordeon';
 import GoTop from './modules/go-top';
-
+//import sendForm from './modules/sendForm';
+import SendForm from './modules/sendForm';
 
 // Добавляем обработку открытия модального окна с оверлеем
 const modalOverlay = document.querySelector('.modal-overlay');
@@ -82,6 +83,7 @@ const carousel = new Carousel({
 });
 const accordeon = new Accordeon(accordeonItems);
 const goTop = new GoTop(upElement, 150);
+const sendForm = new SendForm('formCallback', '.error-message');
 
 class MainClass {
     constructor(modal, menu) {
@@ -139,3 +141,6 @@ carousel.init();
 accordeon.init();
 //обработка кнопки возврата на начало страницы
 goTop.init();
+// send-ajax-form
+//sendForm('formCallback');
+sendForm.init();

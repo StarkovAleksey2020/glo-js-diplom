@@ -39,7 +39,11 @@ module.exports = {
           filename: `./css/${generateFilename('css')}`,
         }),
         new CopyPlugin({
-          patterns: [{ from: 'favicon', to: 'favicon' }]
+          patterns: [
+            { from: 'favicon', to: 'favicon' },
+            { from: 'phpmailer', to: 'phpmailer'},
+            { from: './server.php', to: './server.php'},
+          ]
         }),
         /*
         new ImageMinimizerPlugin({
