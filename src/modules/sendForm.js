@@ -35,6 +35,7 @@ export default class SendForm {
   }
 
   formListener() {
+    /*
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -52,11 +53,13 @@ export default class SendForm {
       if (!this.isError) {
         this.message.textContent = '';
         this.message.classList.add('loader');
+        
         const formData = new FormData(this.form);
         let body = {};
         for (let value of formData.entries()) {
           body[value[0]] = value[1];
         }
+
         this.postData(body, () => {
           this.message.classList.remove('loader');
           this.message.textContent = this.successMessage;
@@ -68,6 +71,7 @@ export default class SendForm {
         });
       }
     });
+    */
     this.phone.addEventListener('input', (e) => {
       let first = true;
       let phoneInput = e.target.value;
@@ -87,7 +91,28 @@ export default class SendForm {
       let nameInput = e.target.value;
       e.target.value = nameInput.replace(/[^А-Яа-яЁё ]/g, '').toUpperCase();
     });
-  
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('form#formCallback').setAttribute('onsubmit', 
+        `event.preventDefault();
+        form = document.querySelector('form#formCallback');
+        var url = 'send.php';
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url);
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            form.setAttribute('onsubmit', 'event.preventDefault();');
+            form.innerHTML = xhr.responseText;
+          }
+          else {
+            alert('При отправке формы произошла ошбика, детали смотрите в консоли.');
+            console.log('При отправке формы произошла ошбика, ниже объект с деталями ошибки:');
+            console.dir(xhr);
+          }
+        }
+      };
+      xhr.send(new FormData(form));`);
+    });
   }
 
   checkName(name) {
@@ -139,9 +164,30 @@ export default class SendForm {
 
     request.open('POST', 'https://jsonplaceholder.typicode.com/posts', true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify(body));
+    //request.send(JSON.stringify(body));
+    request.send(body);
     setTimeout(() => {
       this.message.textContent = '';
     }, 5000);
+  }
+
+  formSend(form) {
+    var url = form.getAttribute('action');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          form.setAttribute('onsubmit', 'event.preventDefault();');
+          form.innerHTML = xhr.responseText;
+        }
+        else {
+          alert('При отправке формы произошла ошбика, детали смотрите в консоли.');
+          console.log('При отправке формы произошла ошбика, ниже объект с деталями ошибки:');
+          console.dir(xhr);
+        }
+      }
+    };
+    xhr.send(new FormData(form));
   }
 }

@@ -43,6 +43,7 @@ module.exports = {
             { from: 'favicon', to: 'favicon' },
             { from: 'phpmailer', to: 'phpmailer'},
             { from: './server.php', to: './server.php'},
+            { from: './send.php', to: './send.php'},
           ]
         }),
         /*
